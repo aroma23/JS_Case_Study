@@ -12,3 +12,4 @@ module.exports = {
 
   ], // mochawesome report generator options
   }
+  
