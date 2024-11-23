@@ -1,14 +1,23 @@
 import pactum from 'pactum';
+import { regex } from 'pactum-matchers';
 import schema from '../schema/users.json' with { type: 'json' };
 
 describe('Users Service APIs Testing', () => {
   
-    it('responds with expected JSON structure', async() => {
+    it('response success', async() => {
       await pactum
       .spec()
       .get('https://reqres.in/api/users/')
-      .expectStatus(200);        
+      .expectStatus(200);
     });
+
+    // it('responds with expected content-type', async() => {
+    //   await pactum
+    //   .spec()
+    //   .get('https://reqres.in/api/users/')
+    //   .expectStatus(200)
+    //   .expectHeader('Content-Type', regex('application/json.*'));
+    // });
 
     it('response matched with expected schema', async() => {
       await pactum
@@ -17,13 +26,13 @@ describe('Users Service APIs Testing', () => {
       .expectJsonSchema(schema);
     });
 
-    // it('response should contain expected user', function(done) {
-    //   request('https://reqres.in').get('/api/users/').
-    //   expect(function(res) {
-    //     expect(res.body.data).to.be.an('array');
-    //     expect(res.body.data[0].id).to.equal(1);
-    //     expect(res.body.data[0].email).to.equal('george.bluth@reqres.in');
-    //     expect(res.body.data[0].avatar).to.contain('1-image.jpg');
-    //   }).end(done);
-    // });    
+    it('response should contain expected user', async() => {
+        await pactum
+        .spec()
+        .get('https://reqres.in/api/users/')
+        .expectStatus(200)
+        .expectJson('data[0].id', 1)
+        .expectJson('data[0].email', 'george.bluth@reqres.in')
+        .expectJsonMatch('data[0].avatar', regex('.*1-image.jpg'));        
+    });    
   });
