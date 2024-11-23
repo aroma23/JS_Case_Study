@@ -1,0 +1,9 @@
+{
+    "env": "prod",
+    "prod": {
+        "url": "https://reqres.in",
+        "email": "george.bluth@reqres.in"
+    },
+    "stage": {"url": "https://reqres-stage.in"},
+    "qa": {"url": "https://reqres-qa.in"}
+}
