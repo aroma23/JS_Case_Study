@@ -128,3 +128,25 @@ options to choose test runners like mocha, jest or cucumber
 Sources: https://medium.com/@joaovitorcoelho10/pactumjs-a-next-gen-rest-api-testing-tool-ae88a9e51916
 
 </details>
+
+<details>
+  <summary>Playwright / Cypress cloud options</summary>
+  
+  ```
+  playwright cloud
+  ---------------
+  https://github.com/microsoft/playwright-testing-service
+  https://azure.microsoft.com/en-us/products/playwright-testing
+  https://azure.microsoft.com/en-us/pricing/details/playwright-testing/
+  ```
+  ```
+  cypress cloud
+  --------------
+  https://www.cypress.io/pricing
+  ```
+
+
+
+</details>
+
+
