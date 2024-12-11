@@ -2,6 +2,12 @@
 ```
 npm run test
 ENV=prod npm run test
+
+ENV=prod npx mocha
+
+ENV=prod npx mocha -g "response success"
+
+ENV=prod npx mocha -g "Example API Custom hook"
 ```
 
 ## Sources:

@@ -10,12 +10,13 @@ describe('Users Service APIs Testing', () => {
     before('setup', () => {
         console.log("properties of " + env);
         property = eval('properties.'+ env);
+        pactum.request.setBaseUrl(property.url);
     })
 
     it('response success', async() => {
       await pactum
       .spec()
-      .get(property.url + '/api/users/')
+      .get('/api/users/')
       .expectStatus(200);
     });
 
@@ -30,14 +31,14 @@ describe('Users Service APIs Testing', () => {
     it('response matched with expected schema', async() => {
       await pactum
       .spec()
-      .get('https://reqres.in/api/users/')
+      .get('/api/users/')
       .expectJsonSchema(schema);
     });
 
     it('response should contain expected user', async() => {
         await pactum
         .spec()
-        .get('https://reqres.in/api/users/')
+        .get('/api/users/')
         .expectStatus(200)
         .expectJson('data[0].id', 1)
         .expectJson('data[0].email', property.email)
