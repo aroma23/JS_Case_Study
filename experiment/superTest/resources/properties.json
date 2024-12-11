@@ -1,0 +1,35 @@
+{
+    "env": "prod",
+    "prod": {
+        "url": "https://reqres.in",
+        "email": "george.bluth@reqres.in"
+    },
+    "stage": {
+        "url": "https://reqres-stage.in"
+    },
+    "qa": {
+        "url": "https://reqres-qa.in",
+        "email": "george.bluth@reqres.in",
+
+        "baseurl":"https:baseuri",
+        "putendpoint":"/put",
+        "deleteendpoint":"/delete/id={id}",
+        "getendpoint":"/get"
+    },
+    "dev":{
+        "url": "https://reqres.in",
+        "email": "george.bluth@reqres.in",
+
+        "baseurl": "https:baseuri",
+        "getendpoint": "/get/",
+        "postendpoint": "/post",
+        "deleteendpoint":"/delete/{id}",
+        "patchendpoint":"/patch/{id}",
+
+        "authurl": "authurl",
+        "client_id": "client_id",
+        "client_secret": "client_secret",
+        "grant_type": "grant_type",
+        "scope": "scope"
+    }
+}
