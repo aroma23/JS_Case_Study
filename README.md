@@ -1,12 +1,82 @@
+
+<details>
+  <summary>JS REST Test Frameworks Comparison</summary>
+  
+
+### Comparison
+```
+superTest:
+
+Data-driven testing	--> Needs external setup through different libraries or file reading utilities which is complicated
+Hooks --> no in built hooks (make use of the mocha's hooks) but not useful
+Parallel execution is possible through the test runner (jest/mocha)
+GraphQL	Requires manual setup which will take long time
+JSON Schema Validation no inbuilt support, possible through external library (chai json schema)
+REST & SOAP Support	REST + SOAP
+HTTP Methods supports all the REST API methods. --> GET, POST, PUT, PATCH, DELETE
+JSONPath is supported using external libraries.
+
+pactum JS:
+
+Data-driven testing	--> Native support for data driven testing through json (for any other file types, need to read the file and convert it a javascript object)
+Hooks --> built in hooks along with the hooks from the test runner (we can write custom hooks as well)
+Parallel execution is possible through the test runner (jest/mocha)
+GraphQL	--> Native support for GraphQL as per the documentations (but didn't check)
+JSON Schema Validation --> In built functions
+REST & SOAP Support	REST only, SOAP is not supported (We need to use chaiXml library)
+HTTP Methods supports all the REST API methods. --> GET, POST, PUT, PATCH, DELETE
+JSONPath is supported natively
+
+PACTUM JS --> we can setup the framework easily in quick time with built in support
+SUPERTEST --> take some time to understand the flow and setup and relies mainly on external libraries
+```
+
+ ### superTest
+```
+Build on top of jest
+
+pros
+------
+Can be combined with mocha for extended capabilities
+Comparetively simple and lightweight than pactumjs
+
+Cons
+-----
+Doesn't support contract testing (not a deal breaker)
+
+```
+sources: https://www.testim.io/blog/supertest-how-to-test-apis-like-a-pro/
+
+https://dev.to/heroku/comparing-the-top-3-javascript-testing-frameworks-2cco
+
+### pactumjs
+
+```
+pros
+----
+Can be used with cucumber to enabled BDD style test
+Suitable for pact / contract testing
+Comes with inbuilt mock server
+options to choose test runners like mocha, jest or cucumber
+
+```
+
+Sources: https://medium.com/@joaovitorcoelho10/pactumjs-a-next-gen-rest-api-testing-tool-ae88a9e51916
+
+</details>
+
 <details>
   <summary>Kafka</summary>
   
-  ### Kafkajs
-	kafkajs -> using this, we can create client for both producer and consumer, send / Receive messages - usefule for black box style testing (including integration/e2e)
+  ### Kafkajs	
 
   ```
 Pros:
 -----
+Kafkajs -> using this, we can create client for both producer and consumer, send / Receive messages - useful for black box style testing (including integration/e2e)
+KafkaJS node library looks promising and it has larger user base (47+ lakhs downloads)
+Avro message format is supported here.
+This library can be used for producing and consuming messages from Kafka stream but for data driven testing it needs external framework support.
 Can be combined with Jest / Mocha
 Can be used for Unit, Integration and E2E Testing  
 
@@ -93,71 +163,6 @@ other libs: kafkajs-mock, kafka-mock
 
 </details>
 
-<details>
-  <summary>JS REST Test Frameworks Comparison</summary>
-  
-
-### Comparison
-```
-superTest:
-
-Data-driven testing	--> Needs external setup through different libraries or file reading utilities which is complicated
-Hooks --> no in built hooks (make use of the mocha's hooks) but not useful
-Parallel execution is possible through the test runner (jest/mocha)
-GraphQL	Requires manual setup which will take long time
-JSON Schema Validation no inbuilt support, possible through external library (chai json schema)
-REST & SOAP Support	REST + SOAP (Limited features for SOAP - I couldn't find proper soap ui's to check though)
-HTTP Methods supports all the REST API methods. --> GET, POST, PUT, PATCH, DELETE
-JSONPath is supported using external libraries.
-
-pactum JS:
-
-Data-driven testing	--> Native support for data driven testing through json (for any other file types, need to read the file and convert it a javascript object)
-Hooks --> built in hooks along with the hooks from the test runner (we can write custom hooks as well)
-Parallel execution is possible through the test runner (jest/mocha)
-GraphQL	--> Native support for GraphQL as per the documentations (but didn't check)
-JSON Schema Validation --> In built functions
-REST & SOAP Support	REST only, SOAP is not supported
-HTTP Methods supports all the REST API methods. --> GET, POST, PUT, PATCH, DELETE
-JSONPath is supported natively
-
-PACTUM JS --> we can setup the framework easily in quick time with built in support
-SUPERTEST --> take some time to understand the flow and setup and relies mainly on external libraries
-```
-
- ### superTest
-```
-Build on top of jest
-
-pros
-------
-Can be combined with mocha for extended capabilities
-Comparetively simple and lightweight than pactumjs
-
-Cons
------
-Doesn't support contract testing (not a deal breaker)
-
-```
-sources: https://www.testim.io/blog/supertest-how-to-test-apis-like-a-pro/
-
-https://dev.to/heroku/comparing-the-top-3-javascript-testing-frameworks-2cco
-
-### pactumjs
-
-```
-pros
-----
-Can be used with cucumber to enabled BDD style test
-Suitable for pact / contract testing
-Comes with inbuilt mock server
-options to choose test runners like mocha, jest or cucumber
-
-```
-
-Sources: https://medium.com/@joaovitorcoelho10/pactumjs-a-next-gen-rest-api-testing-tool-ae88a9e51916
-
-</details>
 
 <details>
   <summary>Playwright / Cypress cloud options</summary>
