@@ -17,7 +17,7 @@ docker run -it qa-node-img:v1 npx mocha -g "Example API Custom hook"
 
 docker run -e VARIABLE=value image_name
 
-docker run -it -v .:/workspace -e ENV=prod qa-node-img:v1 npx mocha -g "response success"
+docker run -it -v .:/workspace -e ENV=qa qa-node-img:v1 npx mocha -g "response success"
 
 docker run -it -v .:/workspace -e ENV=prod qa-node-img:v1 npx mocha -g "response success"
 

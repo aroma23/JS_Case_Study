@@ -170,6 +170,8 @@ other libs: kafkajs-mock, kafka-mock
   ```
   playwright cloud
   ---------------
+  https://www.bigbinary.com/blog/why-we-switched-from-cypress-to-playwright
+  
   https://github.com/microsoft/playwright-testing-service
   https://azure.microsoft.com/en-us/products/playwright-testing
   https://azure.microsoft.com/en-us/pricing/details/playwright-testing/
