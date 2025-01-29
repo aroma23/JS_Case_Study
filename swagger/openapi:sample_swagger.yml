@@ -1,0 +1,153 @@
+openapi: '3.0.3'
+info:
+  title: API Title
+  version: '1.0'
+servers:
+  - url: https://api.server.test/v1
+paths:
+  /users:
+    get:
+      description: 'Get the list of users from system'
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+
+  /users/{username}:
+    get:
+      summary: Get user by username
+      parameters:
+        - name: userName
+          in: path
+          required: true
+          description: The name that needs to be fetched
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+  /user:
+    get:
+      description: ''
+      parameters:
+        - name: id
+          in: query
+          required: true
+          description: The name that needs to be fetched
+          schema:
+            type: string
+
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+    post:
+      description: 'Add an user in to system'
+      requestBody:
+        description: Create a new user
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Invalid input
+        '422':
+          description: Validation exception
+      security:
+        - user_auth:
+            - write:user
+            - read:user
+
+    put:
+      description: 'modify an exsiting user in to system'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id that needs to be fetched
+          schema:
+            type: string
+      requestBody:
+        description: modify an new user
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Invalid input
+        '404':
+          description: Resource Not Found
+        '422':
+          description: Validation exception
+      security:
+        - user_auth:
+            - update:user
+            - read:user
+
+    delete:
+      description: 'delete an exsiting user from system'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id that needs to be fetched
+          schema:
+            type: string
+      responses:
+        '204':
+          description: No content
+        '400':
+          description: Invalid input
+        '404':
+          description: Resource Not Found
+        '422':
+          description: Validation exception
+      security:
+        - user_auth:
+            - delete:user
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        userName:
+          type: string
+          description: User supplied username
+        firstName:
+          type: string
+          description: User first name
+        lastName:
+          type: string
+          description: User last name
+        email:
+          type: string
+          format: email
+          description: User email address                
+        id:
+          type: string
+          format: string
+          description: User unique id                          
