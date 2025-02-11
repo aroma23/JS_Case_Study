@@ -7,6 +7,8 @@ ENV=prod npx mocha
 
 ENV=prod npx mocha -g "response success"
 
+ENV=prod npx mocha -g "response success" --colors 2>&1 | tee -a report/tests.log
+
 ENV=prod npx mocha -g "Example API Custom hook"
 
 npx mocha -g "SOAP Service Testing"
