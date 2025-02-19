@@ -1,5 +1,9 @@
 {
-    "env": "prod",
+    "env": "uat",
+    "uat": {
+        "url": "https://reqres.in",
+        "email": "george.bluth@reqres.in"
+    },
     "prod": {
         "url": "https://reqres.in",
         "email": "george.bluth@reqres.in"

@@ -2,7 +2,7 @@ import { describe, it, expect, beforeAll } from 'vitest'
 import schema from '../schema/users.json' with { type: 'json' };
 import pactum from 'pactum'
 import property from '../resources/config.json'  with { type: 'json' };
-let env = process.env.ENV;
+let env = process.env.ENV || "uat"
 
 
 describe('API Test with vitest', () => {    
