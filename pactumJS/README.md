@@ -32,3 +32,5 @@ https://pactumjs.github.io/guides/api-testing.html
 https://pactumjs.github.io/api/assertions/expectStatus.html
 https://github.com/pactumjs/pactum
 https://www.chaijs.com/plugins/chai-xml/
+https://github.com/pactumjs/pactum/wiki/API-Testing
+https://github.com/pactumjs/pactum-examples/tree/main/code-coverage-nodejs
