@@ -2,7 +2,8 @@
     "env": "uat",
     "uat": {
         "url": "https://reqres.in",
-        "email": "Rey.Padberg@karina.biz"
+        "email": "Rey.Padberg@karina.biz",
+        "subscriptionKey": "blahblah"
     },
     "prod": {
         "url": "https://reqres.in",

@@ -15,6 +15,11 @@ to preview the results
 npx vite preview --outDir reports/html/
 http://localhost:4173/
 
+https://github.com/pactumjs/pactum-swagger-coverage/blob/main/tests/testObjects/openapi3.yaml
+
+https://www.ontestautomation.com/api-mocking-in-javascript-with-pactum/
+
+https://github.com/basdijkstra/api-testing-js-pactum
 ```
 
 ### Vitest Observations

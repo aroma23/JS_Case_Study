@@ -3,9 +3,18 @@
     "@vitest/ui": "^3.0.6",
     "axios": "^1.7.9",
     "pactum": "^3.7.6",
+    "pactum-swagger-coverage": "^2.0.3",
     "vitest": "^3.0.6"
   },
   "scripts": {
-    "test": "vitest"
+    "test": "vitest",
+    "smoke": "npx vitest --run test/sum.test.js",
+    "mock": "npx vitest --run test/mock.*.test.js",
+    "error": "npx vitest --run test/error.*.test.js",
+    "coverage": "npx vitest --run test/api.coverage.test.js",
+    "user": "npx vitest --run --testNamePattern='user'",
+    "schema": "npx vitest --run --testNamePattern='schema'",
+    "chain": "npx vitest --run test/chaining.*.test.js",
+    "results": "npx vite preview --outDir reports/html"    
   }
 }
