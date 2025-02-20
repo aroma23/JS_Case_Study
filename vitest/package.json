@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "@vitest/ui": "^3.0.6",
+    "axios": "^1.7.9",
     "pactum": "^3.7.6",
     "vitest": "^3.0.6"
   },

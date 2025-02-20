@@ -24,6 +24,8 @@ http://localhost:4173/
 4) Community support is less than JEST but community is growing
 5) Must be extended with HTTP client libraries for API testings
     Options include: Axios, SuperTest, Pactum and etc
+6) Has ability to selectively run tests using only, skip, --testNamePattern or grep
+    eg: npx vitest run --testNamePattern="user"
 
 
 
