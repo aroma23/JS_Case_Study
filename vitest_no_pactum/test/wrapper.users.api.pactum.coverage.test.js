@@ -3,14 +3,21 @@ import { readUsers, readUser } from "../api/Users";
 import pactum from "pactum";
 import dotenv from "dotenv";
 
+const psc = require('pactum-swagger-coverage');
+const reporter = pactum.reporter;
+
 describe('API Test with vitest', () => {
   beforeAll(() => {
     // Load environment variables from .env file for standalone tests
     dotenv.config();
     let baseURL = process.env.API_BASE_URL || "http://localhost:8000";
     pactum.request.setBaseUrl(baseURL);
-  })
 
+    psc.swaggerYamlPath = './swagger/users.yml';
+    psc.reportFile = 'users-coverage.json';
+    // psc.basePath = '/v1';
+    reporter.add(psc);
+  })
 
   it("fetches users successfully", async () => {
     const api = pactum.spec();
@@ -31,7 +38,7 @@ describe('API Test with vitest', () => {
 
   it("fetch specfic user successfully", async () => {
     const api = pactum.spec();
-    const response = await readUser(api, {user_id: 2});
+    const response = await readUser(api, { user_id: 2 });
     // console.log(response);
     // console.log(response.statusCode);
     // console.log(response.body);
@@ -47,6 +54,6 @@ describe('API Test with vitest', () => {
   });
 
   afterAll(() => {
-    // TODO - any teardown needed for this test suite
+    return reporter.end();
   })
 })

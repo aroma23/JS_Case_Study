@@ -5,6 +5,7 @@
     "axios": "^1.7.9",
     "json-schema-faker": "^0.5.8",
     "pactum": "^3.7.6",
+    "pactum-swagger-coverage": "^2.0.3",
     "test-publish-es6-package": "^1.0.42",
     "vitest": "^3.0.6"
   },
