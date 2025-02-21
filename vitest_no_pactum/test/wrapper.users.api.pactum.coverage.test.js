@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 const psc = require('pactum-swagger-coverage');
 const reporter = pactum.reporter;
 
-describe('API Test with vitest', () => {
+describe('Frictionless API Test with vitest', () => {
   beforeAll(() => {
     // Load environment variables from .env file for standalone tests
     dotenv.config();
@@ -19,7 +19,8 @@ describe('API Test with vitest', () => {
     reporter.add(psc);
   })
 
-  it("fetches users successfully", async () => {
+  //AC_FL_TC001 ==> account center friction less testcase 1
+  it("AC_FL_TC001 - fetches users successfully pactum", async () => {
     const api = pactum.spec();
     const response = await readUsers(api);
     // console.log(response);

@@ -18,7 +18,7 @@ describe('API Test with vitest', () => {
     beforeAll(() => {
     })
 
-    it("fetches users successfully", async () => {
+    it("axios - fetches users successfully", async () => {
       const response = await readUsers(api);
     //   const payload = generateCreateUserPayload();
     //   console.log(payload);
