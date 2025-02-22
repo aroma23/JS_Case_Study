@@ -7,6 +7,7 @@
     "pactum": "^3.7.6",
     "pactum-swagger-coverage": "^2.0.3",
     "test-publish-es6-package": "^1.0.42",
+    "users-es6-package": "^1.0.0",
     "vitest": "^3.0.6"
   },
   "scripts": {
