@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll, afterAll, beforeEach } from 'vitest';
-import { Users } from 'users-es6-package';
-import pactum from "pactum";
+import { Users } from 'users-es6-pactum-package'
+import pactum, { expect as pactumExpect, expectStatus } from "pactum";
 import dotenv from "dotenv";
 
 describe('API Test with vitest', () => {
@@ -12,26 +12,24 @@ describe('API Test with vitest', () => {
   })
 
 
-  it("fetches users successfully", async () => {
-    await new Users("https://reqres.in/api").readUsers().then((res) => {
-      console.log("Muthukumar: " + res.data.data.email);
-      expect(res.status).to.be.eql(400);
+  it("read user successfully - pactum way2", async () => {
+    const users = new Users("https://reqres.in/api");
+    const handle = await users.readUser('2');
+    pactumExpect(handle).to.have.status(200);
+    expect(handle.statusCode).to.be.eql(200);
     });
-    // const response = await readUsers(api);
-    // console.log(response);
-    // console.log(response.statusCode);
-    // console.log(response.body);
-    // correct
-    //incorrect
-    // await api.expectStatus(400);
-    // correct
-    // await api.expectJson('[0].email', 'john@gmail.com')
-    //incorrect
-    // await api.expectJson('[0].email', 'morrison@gmail.com')
-    // expect(response.statusCode).toBe(400);
+  
+
+  it("fetches user successfully - vitest way", async () => {
+    await new Users("https://reqres.in/api").readUser('2').then((res) => {
+      console.log("Muthukumar: " + res.body.data.email);
+      expect(res.statusCode).to.be.eql(200);
+    });
   });
 
   afterAll(() => {
     // TODO - any teardown needed for this test suite
-  })
-})
+  });
+
+});
+  
