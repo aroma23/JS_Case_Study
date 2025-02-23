@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll, afterAll, beforeEach } from 'vitest';
-import { readUsers, readUser } from "../api/Users";
+import { Users } from "users-es6-pactum-package";
 import pactum from "pactum";
 import dotenv from "dotenv";
 
@@ -7,6 +7,7 @@ const psc = require('pactum-swagger-coverage');
 const reporter = pactum.reporter;
 
 describe('Frictionless API Test with vitest', () => {
+  const users = new Users('https://reqres.in/api');
   beforeAll(() => {
     // Load environment variables from .env file for standalone tests
     dotenv.config();
@@ -21,36 +22,19 @@ describe('Frictionless API Test with vitest', () => {
 
   //AC_FL_TC001 ==> account center friction less testcase 1
   it("AC_FL_TC001 - fetches users successfully pactum", async () => {
-    const api = pactum.spec();
-    const response = await readUsers(api);
+    const spec = pactum.spec();
+    const response = await users.readUser('3', spec);
     // console.log(response);
     // console.log(response.statusCode);
     // console.log(response.body);
     // correct
-    await api.expectStatus(200);
+    await spec.expectStatus(200);
     //incorrect
-    // await api.expectStatus(400);
+    // await spec.expectStatus(400);
     // correct
-    // await api.expectJson('[0].email', 'john@gmail.com')
+    // await spec.expectJson('[0].email', 'john@gmail.com')
     //incorrect
-    await api.expectJson('[0].email', 'morrison@gmail.com')
-    // expect(response.statusCode).toBe(400);
-  });
-
-  it("fetch specfic user successfully", async () => {
-    const api = pactum.spec();
-    const response = await readUser(api, { user_id: 2 });
-    // console.log(response);
-    // console.log(response.statusCode);
-    // console.log(response.body);
-    // correct
-    await api.expectStatus(200);
-    //incorrect
-    // await api.expectStatus(400);
-    // correct
-    // await api.expectJson('email', 'john@gmail.com')
-    //incorrect
-    await api.expectJson('email', 'morrison@gmail.com')
+    await spec.expectJson('data.email', 'emma.wong@reqres.in')
     // expect(response.statusCode).toBe(400);
   });
 
