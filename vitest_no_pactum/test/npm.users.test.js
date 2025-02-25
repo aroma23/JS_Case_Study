@@ -1,6 +1,5 @@
 import { describe, it, expect, beforeAll, afterAll, beforeEach } from 'vitest';
-// import { Users } from 'users-es6-pactum-package'
-import { Users } from '../api/Users'
+import { Users } from 'users-es6-pactum-package'
 import pactum, { expect as pactumExpect, expectStatus } from "pactum";
 
 describe('API Test with vitest', () => {
