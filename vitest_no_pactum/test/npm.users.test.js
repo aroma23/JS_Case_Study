@@ -1,34 +1,34 @@
 import { describe, it, expect, beforeAll, afterAll, beforeEach } from 'vitest';
-import { Users } from 'users-es6-pactum-package'
+// import { Users } from 'users-es6-pactum-package'
+import { Users } from '../api/Users'
 import pactum, { expect as pactumExpect, expectStatus } from "pactum";
-import dotenv from "dotenv";
 
 describe('API Test with vitest', () => {
-  const users = new Users("https://reqres.in/api");
   beforeAll(() => {
-    // Load environment variables from .env file for standalone tests
-    dotenv.config();
-    let baseURL = process.env.API_BASE_URL || "http://localhost:8000";
-    pactum.request.setBaseUrl(baseURL);
+    const baseUrl = process.env.VITE_USERS_API_BASE_URL || '"VITE_USERS_API_BASE_URL" is not set in .env file';
+    console.info("Tests are targetted for config : " + process.env.VITE_ENV_LABEL);
+    console.info("VITE_SECRET_KEY : " + process.env.VITE_SECRET_KEY);
+    console.info("BASE URL : " + baseUrl);
+    pactum.request.setBaseUrl(baseUrl);
   })
 
   it("read user successfully - pactum way3", async () => {
-    const spec = pactum.spec();
-    await users.readUser('2', spec);
-    await spec.expectStatus(200);
+    const handle = pactum.spec();
+    await Users.readUser('2', handle);
+    await handle.expectStatus(200);
   });
 
   it("read user successfully - pactum way", async () => {
-    const handle = await users.readUser('2');
+    const handle = await Users.readUser('2');
     pactumExpect(handle).to.have.status(200);
     expect(handle.statusCode).to.be.eql(200);
   });
 
 
   it("fetches user successfully - vitest way", async () => {
-    await users.readUser('2').then((res) => {
+    await Users.readUser('2').then((res) => {
       console.log("fetches user successfully - vitest way: " + res.body.data.email);
-      expect(res.statusCode).to.be.eql(400);
+      expect(res.statusCode).to.be.eql(200);
     });
   });
 
@@ -47,18 +47,18 @@ describe('API Test with vitest', () => {
 
   it("add users successfully - pactum way", async () => {
     const spec = pactum.spec();
-    await users.addUser({
+    await Users.addUser({
       "name": "morpheus",
       "job": "leader",
       "id": "966",
       "createdAt": "2025-02-22T17:32:18.618Z"
     }, spec);
-    await spec.expectStatus(400, 'created');
+    await spec.expectStatus(201, 'created');
     console.log(await spec.returns('name'));
   });
 
   it("add users successfully - vitest way", async () => {
-    await users.addUser({
+    await Users.addUser({
       "name": "muthukumar",
       "job": "leader",
       "id": "966",
