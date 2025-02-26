@@ -1,20 +1,30 @@
 import { describe, it, expect, beforeAll, afterAll, beforeEach } from 'vitest';
-import { Users } from 'users-es6-pactum-package'
+// import {StringUtils} from 'users-es6-pactum-package';
+const { StringUtils } = require('users-es6-pactum-package/utils');
+import {Users, Salesforce} from 'users-es6-pactum-package/clients';
+// const {Users, Salesforce} = require ('users-es6-pactum-package/clients');
 import pactum, { expect as pactumExpect, expectStatus } from "pactum";
 
 describe('API Test with vitest', () => {
   beforeAll(() => {
-    const baseUrl = process.env.VITE_USERS_API_BASE_URL || '"VITE_USERS_API_BASE_URL" is not set in .env file';
-    console.info("Tests are targetted for config : " + process.env.VITE_ENV_LABEL);
-    console.info("VITE_SECRET_KEY : " + process.env.VITE_SECRET_KEY);
-    console.info("BASE URL : " + baseUrl);
-    pactum.request.setBaseUrl(baseUrl);
+    // const baseUrl = process.env.VITE_USERS_API_BASE_URL || '"VITE_USERS_API_BASE_URL" is not set in .env file';
+    // console.info("Tests are targetted for config : " + process.env.VITE_ENV_LABEL);
+    // console.info("VITE_SECRET_KEY : " + process.env.VITE_SECRET_KEY);
+    // console.info("BASE URL : " + baseUrl);
+    // pactum.request.setBaseUrl(baseUrl);
   })
 
   it("read user successfully - pactum way3", async () => {
     const handle = pactum.spec();
     await Users.readUser('2', handle);
     await handle.expectStatus(200);
+    Salesforce.readSalesforce();
+    Salesforce.writeSalesforce();
+    console.log(Salesforce.Methods.readSalesforce);
+    console.log(StringUtils.capitalize("hello"));
+    console.log("process.env: " + process.env);
+    console.log("process.env: " + process.env);
+    console.log("process.env: " + process.env['VITE_USERS_API_BASE_URL']);
   });
 
   it("read user successfully - pactum way", async () => {
