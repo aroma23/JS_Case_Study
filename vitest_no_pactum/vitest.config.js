@@ -2,7 +2,9 @@ import { defineConfig } from 'vitest/config';
 import RPReporter from '@reportportal/agent-js-vitest'; // or import { RPReporter } from '@reportportal/agent-js-vitest';
 
 const rpConfig = {
-  apiKey: '<<API_KEY>>',
+  //pass report portal api from envuironment variables
+  // like RP_API_KEY=vitest-demo_api_key npx vitest run test/npm.users.test.js
+  apiKey: process.env.RP_API_KEY,
   endpoint: 'https://demo.reportportal.io/api/v1',
   project: 'aroma23_personal',
   launch: 'Vitest with pactum clients',
