@@ -41,3 +41,11 @@ axios - fetches users successfully|TC001 - fetches users successfully pactum|fet
 
 python3 -m json.tool reports/report.json | grep -A 1 failed | grep title | sed 's/\"title\":/npx vitest run -t/g' | sed 's/,//g'> rerun.sh
 sh rerun.sh
+
+
+Report-portal
+https://reportportal.io/docs/installation-steps/DeployWithDocker
+https://reportportal.io/docs/log-data-in-reportportal/HowToGetAnAccessTokenInReportPortal/
+https://github.com/reportportal/agent-js-vitest#readme
+
+
