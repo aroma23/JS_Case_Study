@@ -4,6 +4,7 @@ const { StringUtils } = require('users-es6-pactum-package/utils');
 import {Users, Salesforce} from 'users-es6-pactum-package/clients';
 // const {Users, Salesforce} = require ('users-es6-pactum-package/clients');
 import pactum, { expect as pactumExpect, expectStatus } from "pactum";
+import {ReportingApi} from '@reportportal/agent-js-vitest';
 
 describe('API Test with vitest', () => {
   beforeAll(() => {
@@ -14,7 +15,9 @@ describe('API Test with vitest', () => {
     // pactum.request.setBaseUrl(baseUrl);
   })
 
-  it("read user successfully - pactum way3", async () => {
+  it("read user successfully - pactum way3", async ({task}) => {
+    console.log("task.name: " + task.name);
+    ReportingApi.attributes(task, [{ key: 'Muthu', value: 'Kumar'}]);
     const handle = pactum.spec();
     await Users.readUser('2', handle);
     await handle.expectStatus(200);
@@ -22,9 +25,6 @@ describe('API Test with vitest', () => {
     Salesforce.writeSalesforce();
     console.log(Salesforce.Methods.readSalesforce);
     console.log(StringUtils.capitalize("hello"));
-    console.log("process.env: " + process.env);
-    console.log("process.env: " + process.env);
-    console.log("process.env: " + process.env['VITE_USERS_API_BASE_URL']);
   });
 
   it("read user successfully - pactum way", async () => {
