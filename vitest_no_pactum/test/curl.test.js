@@ -1,4 +1,4 @@
-import { describe, it, beforeEach } from 'vitest';
+import { describe, it, beforeEach, expect } from 'vitest';
 import pactum from "pactum";
 const { pactumEvents, EVENT_TYPES } = require('pactum').events;
 
@@ -27,10 +27,10 @@ pactumEvents.on(EVENT_TYPES.BEFORE_REQUEST, (cxt) => {
 // });
 
 
-describe('curl testing', () => {
-    
+describe.concurrent('curl testing', () => {
+
     beforeEach(() => {
-        console.log('-----------------------');
+        console.log('Running Test:', expect.getState().currentTestName);
     });
 
     it('should post make a request', async () => {

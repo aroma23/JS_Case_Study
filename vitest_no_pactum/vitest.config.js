@@ -21,7 +21,8 @@ export default defineConfig({
   test: {
     // add setup file to be able to use ReportingApi via `this.ReportingApi` in your tests
     setupFiles: ["@reportportal/agent-js-vitest/setup"],
-    reporters: ['html', 'verbose', 'json', 'junit', new RPReporter(rpConfig)],
+    // reporters: ['html', 'verbose', 'json', 'junit', new RPReporter(rpConfig)],
+    reporters: ['html', 'verbose', 'json', 'junit'],
     outputFile: {
       html: './reports/html/index.html',
       json: './reports/report.json',
