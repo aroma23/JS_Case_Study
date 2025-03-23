@@ -1,0 +1,15 @@
+{
+  "name": "db2",
+  "version": "1.0.0",
+  "main": "db2.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "ibm_db": "^3.3.0",
+    "odbc": "^2.4.9"
+  }
+}
