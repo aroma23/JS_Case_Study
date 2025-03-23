@@ -9,6 +9,7 @@
   },
   "scripts": {
     "test": "vitest",
+    "generate:coverage:report": "node make.coverage.html.js",
     "axios": "npx vitest --run grep axio",
     "mock": "npx vitest --run test/mock.*.test.js",
     "error": "npx vitest --run test/error.*.test.js",
